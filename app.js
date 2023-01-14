@@ -1,37 +1,78 @@
+let humanScore = 0;
+let computerScore = 0;
 
 
-const computerSelection = getComputerChoice().toUpperCase()
-const playerSelection = prompt("Rock, Paper or Scissors?").toUpperCase()
+game()
 
-function playRound (playerSelection, computerSelection) {
 
-    if (playerSelection === computerSelection) {
-        return alert(`${computerSelection} ties ${playerSelection}`);
+
+function game() {
+
+    for (let i = 0; i < 5; i++) {
+
+        let computerSelection = getComputerChoice().toUpperCase()
+        let playerSelection = prompt("Rock, Paper Scissors: SHOOT!").toUpperCase()
+
+        let winner = playRound(playerSelection, computerSelection)
+
+        if (winner === 1) {
+            i--;
+        } else if (winner === 2) {
+            computerScore++;
+        } else if (winner === 3) {
+            humanScore++;
+        }
+
     }
 
-    if (playerSelection === "ROCK") {
-        if (computerSelection === "PAPER") {
-            return alert("YOU LOSE! PAPER BEATS ROCK")
+    if (humanScore > computerScore) {
+        alert(`You Won ${humanScore} to ${computerScore}! Congrats!`)
+    } else {
+        alert(`You LOST ${computerScore} to ${humanScore}! slickhead!`)
+    }
+}
+
+
+
+
+
+
+function playRound(playerSelection, computerSelection) {
+    
+    if (playerSelection.localeCompare(computerSelection) === 0) {
+        alert(`${computerSelection} ties ${playerSelection}`);
+        return 1
+    }
+
+    if (playerSelection ==="ROCK") {
+        if (computerSelection.localeCompare("PAPER") === 0) {
+            alert("YOU LOSE! PAPER BEATS ROCK")
+            return 2
         } else {
-            return alert("YOU WIN! ROCK BEATS SCISSORS")
+            alert("YOU WIN! ROCK BEATS SCISSORS")
+            return 3
         }
     } else if (playerSelection === "PAPER") {
-        if (computerSelection === "SCISSORS") {
-            return alert("YOU LOSE!! SCISSORS BEATS PAPER")
+        if (computerSelection.localeCompare("SCISSORS") === 0) {
+            alert("YOU LOSE!! SCISSORS BEATS PAPER")
+            return 2
         } else {
-            return alert("YOU WIN! PAPER BEATS ROCK!")
+            alert("YOU WIN! PAPER BEATS ROCK!")
+            return 3
         }
     } else if (playerSelection === "SCISSORS") {
-        if (computerSelection === "ROCK") {
-            return alert("YOU LOSE!! ROCK BEATS SCISSORS")
+        if (computerSelection.localeCompare("ROCK") === 0) {
+            alert("YOU LOSE!! ROCK BEATS SCISSORS")
+            return 2
         } else {
-            return alert("YOU WIN!! SCISSORS BEATS PAPER!!")
+            alert("YOU WIN!! SCISSORS BEATS PAPER!!")
+            return 3
         }
     } 
 }
 
 
-function getComputerChoice () {
+function getComputerChoice() {
 
     let rps = Math.floor(Math.random() * 3 + 1)
     let challenge;
