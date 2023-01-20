@@ -78,7 +78,7 @@ scissors.addEventListener('click', function (e) {
 function playRound(playerSelection, computerSelection) {
 
     if (playerSelection.localeCompare(computerSelection) === 0) {
-        console.log(`${computerSelection} ties ${playerSelection}`);
+        msg.innerText = `${computerSelection} ties ${playerSelection}`;
         return 0;
     }
 
