@@ -4,6 +4,7 @@ let computerScore = 0;
 
 game()
 
+alert("good game sir!");
 
 
 function game() {
