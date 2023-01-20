@@ -2,9 +2,30 @@ let humanScore = 0;
 let computerScore = 0;
 
 
-game()
 
-alert("good game sir!");
+const rock = document.querySelector("#rockBtn");
+const paper = document.querySelector("#paperBtn")
+const scissors = document.querySelector("#scissorsBtn") 
+
+rock.addEventListener('click', function (e) {
+    let computerSelection = getComputerChoice().toUpperCase()
+    let humanSelection = "ROCK"
+    playRound(humanSelection, computerSelection);
+});
+
+paper.addEventListener('click', function (e) {
+    let computerSelection = getComputerChoice().toUpperCase()
+    let humanSelection = "PAPER"
+    playRound(humanSelection, computerSelection);
+});
+
+scissors.addEventListener('click', function (e) {
+    let computerSelection = getComputerChoice().toUpperCase()
+    let humanSelection = "SCISSORS"
+    playRound(humanSelection, computerSelection);
+});
+
+
 
 
 function game() {
@@ -41,32 +62,32 @@ function game() {
 function playRound(playerSelection, computerSelection) {
     
     if (playerSelection.localeCompare(computerSelection) === 0) {
-        alert(`${computerSelection} ties ${playerSelection}`);
+        console.log(`${computerSelection} ties ${playerSelection}`);
         return 1
     }
 
     if (playerSelection ==="ROCK") {
         if (computerSelection.localeCompare("PAPER") === 0) {
-            alert("YOU LOSE! PAPER BEATS ROCK")
+            console.log("YOU LOSE! PAPER BEATS ROCK")
             return 2
         } else {
-            alert("YOU WIN! ROCK BEATS SCISSORS")
+            console.log("YOU WIN! ROCK BEATS SCISSORS")
             return 3
         }
     } else if (playerSelection === "PAPER") {
         if (computerSelection.localeCompare("SCISSORS") === 0) {
-            alert("YOU LOSE!! SCISSORS BEATS PAPER")
+            console.log("YOU LOSE!! SCISSORS BEATS PAPER")
             return 2
         } else {
-            alert("YOU WIN! PAPER BEATS ROCK!")
+            console.log("YOU WIN! PAPER BEATS ROCK!")
             return 3
         }
     } else if (playerSelection === "SCISSORS") {
         if (computerSelection.localeCompare("ROCK") === 0) {
-            alert("YOU LOSE!! ROCK BEATS SCISSORS")
+            console.log("YOU LOSE!! ROCK BEATS SCISSORS")
             return 2
         } else {
-            alert("YOU WIN!! SCISSORS BEATS PAPER!!")
+            console.log("YOU WIN!! SCISSORS BEATS PAPER!!")
             return 3
         }
     } 
